@@ -564,6 +564,105 @@
       flex-wrap: wrap;
     }
 
+
+
+    .contact-highlight {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .contact-card-hero {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(149,181,214,0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card-hero h4 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .contact-card-hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-link {
+      color: #c8faff;
+      font-weight: 600;
+    }
+
+    .hire-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 10, 20, 0.72);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .hire-modal.show { display: flex; }
+
+    .hire-modal-card {
+      width: min(100%, 520px);
+      background: linear-gradient(180deg, rgba(12, 22, 40, 0.98), rgba(8, 16, 30, 0.98));
+      border: 1px solid rgba(30, 228, 164, 0.22);
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(30, 228, 164, 0.08), 0 24px 60px rgba(0,0,0,0.45);
+      padding: 28px;
+      position: relative;
+    }
+
+    .hire-modal-card h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .hire-modal-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #dff7ff;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal-contact-list {
+      display: grid;
+      gap: 14px;
+      margin: 18px 0 22px;
+    }
+
+    .modal-contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(149,181,214,0.14);
+    }
+
     @media (max-width: 1024px) {
       .grid-3,
       .stats-grid,
@@ -573,7 +672,8 @@
       .project-content { grid-template-columns: repeat(2, 1fr); }
 
       .about-grid,
-      .contact-grid { grid-template-columns: 1fr; }
+      .contact-grid,
+      .contact-highlight { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -608,7 +708,7 @@
         <a href="#experience">Kinh nghiệm</a>
         <a href="#contact">Liên hệ</a>
       </nav>
-      <a class="btn btn-primary" href="#contact">Thuê tôi ngay</a>
+      <a class="btn btn-primary" href="javascript:void(0)" onclick="openHireModal()">Thuê tôi ngay</a>
     </div>
   </header>
 
@@ -617,7 +717,7 @@
       <div class="container hero-wrap">
         <div style="width: 140px; height: 140px; margin: 0 auto 22px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, rgba(30,228,164,0.95), rgba(30,223,255,0.95), rgba(141,107,255,0.9)); box-shadow: 0 0 40px rgba(30,228,164,0.18), 0 0 60px rgba(141,107,255,0.12);">
           <div style="width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: linear-gradient(180deg, #0f1d31, #091423); border: 3px solid rgba(8,16,30,0.95); display: flex; align-items: center; justify-content: center; color: #9feeff; font-size: 14px; text-align: center; padding: 16px;">
-            <img src="images/a.jpg" alt="Ảnh profile" style="width: 300%; height: 300%; object-fit: cover; this.nextElementSibling.style.display='flex';" /> 
+            <img src="images/a.jpg" alt="Ảnh profile" style="width: 300%; height: 300%; object-fit: cover;; this.nextElementSibling.style.display='flex';" />
             <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; gap:6px;">
               <div style="font-size: 36px;">👤</div>
               <div>Ảnh profile</div>
@@ -1006,58 +1106,72 @@
         </div>
       </div>
     </section>
-<!-- 
-    <section class="section" id="contact">
-      <div class="container">
+<section class="section" id="contact">
+      <div class="container" style="max-width: 1120px;">
         <div class="section-title">
-          <span class="eyebrow">Liên hệ</span>
+          <span class="eyebrow">LIÊN HỆ</span>
           <h2>Kết nối với tôi</h2>
           <div class="line"></div>
         </div>
 
-        <div class="contact-grid">
-          <div class="feature-stack">
+        <div class="contact-grid" style="margin-top: 30px; align-items: stretch;">
+          <div class="feature-stack" style="gap: 18px;">
             <div class="contact-item">
               <div class="icon-box">✉️</div>
               <div>
                 <h4>Email</h4>
-                <p>yourname@example.com</p>
+                <p><a class="contact-link" href="mailto:phuonghocit@gmail.com">phuonghocit@gmail.com</a></p>
               </div>
             </div>
             <div class="contact-item">
               <div class="icon-box">📞</div>
               <div>
                 <h4>Điện thoại</h4>
-                <p>+84 123 456 789</p>
+                <p><a class="contact-link" href="tel:0845032258">0845032258</a></p>
               </div>
             </div>
             <div class="contact-item">
               <div class="icon-box">📍</div>
               <div>
-                <h4>Địa chỉ</h4>
+                <h4>Khu vực</h4>
                 <p>TP. Hồ Chí Minh, Việt Nam</p>
               </div>
             </div>
-            <div class="btn-row" style="justify-content: flex-start; margin-top: 4px;">
-              <a class="social-btn" href="#">⌘</a>
-              <a class="social-btn" href="#">in</a>
-              <a class="social-btn" href="#">f</a>
+            <div class="contact-item">
+              <div class="icon-box">💼</div>
+              <div>
+                <h4>Trạng thái</h4>
+                <p>Sẵn sàng thực tập, freelance hoặc cơ hội full-time phù hợp.</p>
+              </div>
             </div>
           </div>
 
           <div class="card">
-            <h3>Gửi tin nhắn</h3>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-              <input class="input" type="text" placeholder="Họ và tên" required />
-              <input class="input" type="email" placeholder="Email của bạn" required />
-              <input class="input" type="text" placeholder="Tiêu đề" />
-              <textarea placeholder="Tin nhắn của bạn..."></textarea>
-              <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
-            </form>
+            <h3>Liên hệ nhanh</h3>
+            <p>Bạn có thể gọi điện, gửi email trực tiếp hoặc nhấn nút bên dưới để mở thông tin thuê tôi ngay.</p>
+            <div class="contact-highlight">
+              <div class="contact-card-hero">
+                <h4>Gọi trực tiếp</h4>
+                <p>Trao đổi nhanh về internship, dự án bảo mật web, pentest lab hoặc cơ hội hợp tác.</p>
+                <div class="btn-row" style="justify-content: flex-start; margin-top: 16px;">
+                  <a href="tel:0845032258" class="btn btn-primary">0845032258</a>
+                </div>
+              </div>
+              <div class="contact-card-hero">
+                <h4>Gửi email</h4>
+                <p>Phù hợp khi cần gửi JD, yêu cầu công việc, tài liệu hoặc lời mời phỏng vấn.</p>
+                <div class="btn-row" style="justify-content: flex-start; margin-top: 16px;">
+                  <a href="mailto:phuonghocit@gmail.com" class="btn btn-secondary">phuonghocit@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="btn-row" style="justify-content: flex-start; margin-top: 18px;">
+              <button type="button" class="btn btn-primary" onclick="openHireModal()">Thuê tôi ngay</button>
+            </div>
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
       <section class="section" id="certifications">
       <div class="container" style="max-width: 1120px;">
         <div class="section-title">
@@ -1118,6 +1232,34 @@
     </section>
   </main>
 
+    <div class="hire-modal" id="hireModal" onclick="closeHireModal(event)">
+    <div class="hire-modal-card" onclick="event.stopPropagation()">
+      <button class="close-modal" type="button" onclick="closeHireModal()">×</button>
+      <h3>Thông tin liên hệ</h3>
+      <p>Bạn có thể liên hệ trực tiếp với tôi qua các thông tin dưới đây để trao đổi về internship, dự án hoặc cơ hội hợp tác.</p>
+      <div class="modal-contact-list">
+        <div class="modal-contact-item">
+          <div class="icon-box">📞</div>
+          <div>
+            <h4 style="margin:0 0 4px;">Số điện thoại</h4>
+            <a class="contact-link" href="tel:0845032258">0845032258</a>
+          </div>
+        </div>
+        <div class="modal-contact-item">
+          <div class="icon-box">✉️</div>
+          <div>
+            <h4 style="margin:0 0 4px;">Email</h4>
+            <a class="contact-link" href="mailto:phuonghocit@gmail.com">phuonghocit@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="btn-row" style="justify-content: flex-start;">
+        <a href="tel:0845032258" class="btn btn-primary">Gọi ngay</a>
+        <a href="mailto:phuonghocit@gmail.com" class="btn btn-secondary">Gửi email</a>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container footer-row">
       <div>© 2026 Portfolia. All rights reserved.</div>
@@ -1132,5 +1274,29 @@
       alert('Biểu mẫu demo đã được gửi. Hãy kết nối với backend hoặc Formspree để nhận email thật.');
     }
   </script> -->
+
+  <script>
+    function openHireModal() {
+      document.getElementById('hireModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHireModal(event) {
+      if (!event || event.target.id === 'hireModal' || event.target.classList.contains('close-modal')) {
+        document.getElementById('hireModal').classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('hireModal');
+        if (modal && modal.classList.contains('show')) {
+          modal.classList.remove('show');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  </script>
 </body>
 </html>
