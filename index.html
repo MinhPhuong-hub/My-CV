@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Portfolio</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0a1527;
+      --card: rgba(12, 24, 44, 0.78);
+      --card-2: rgba(10, 22, 40, 0.9);
+      --line: rgba(88, 255, 208, 0.12);
+      --text: #e8f6ff;
+      --muted: #8fa7bb;
+      --green: #1ee4a4;
+      --cyan: #1edfff;
+      --purple: #8d6bff;
+      --danger: #ff6b7a;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(30, 228, 164, 0.12), transparent 24%),
+        radial-gradient(circle at 70% 10%, rgba(141, 107, 255, 0.10), transparent 20%),
+        linear-gradient(180deg, #06111f 0%, #071120 35%, #091423 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+    }
+
+    .section-title .line {
+      width: 72px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      border-radius: 999px;
+      margin: 14px auto 0;
+      box-shadow: 0 0 18px rgba(30, 228, 164, 0.45);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(30, 228, 164, 0.25);
+      border-radius: 999px;
+      color: #b8ffea;
+      background: rgba(30, 228, 164, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 46px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), #11c790);
+      color: #04111d;
+      box-shadow: 0 12px 28px rgba(30, 228, 164, 0.22);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: #ddf7ff;
+      border-color: rgba(144, 172, 196, 0.25);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(30, 223, 255, 0.35);
+      box-shadow: 0 0 0 4px rgba(30, 223, 255, 0.08);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 12, 24, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      display: grid;
+      place-items: center;
+      color: #04111d;
+      font-weight: 900;
+      box-shadow: 0 0 20px rgba(30, 223, 255, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 64px 0 72px;
+      min-height: calc(100vh - 78px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-wrap {
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: auto;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 228, 164, 0.14), transparent 60%);
+      filter: blur(16px);
+      left: 50%;
+      top: -80px;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      margin: 20px 0 18px;
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 28px rgba(30, 228, 164, 0.18);
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0 auto 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta-row {
+      margin: 24px 0 28px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      display: grid;
+      place-items: center;
+      color: #d9f6ff;
+      transition: 0.25s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(30, 228, 164, 0.35);
+      box-shadow: 0 0 0 4px rgba(30, 228, 164, 0.08);
+    }
+
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(13, 24, 43, 0.88), rgba(9, 20, 36, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(30,228,164,0.05), transparent 35%, rgba(30,223,255,0.04));
+      pointer-events: none;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature-card {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex: 0 0 auto;
+      background: rgba(30, 228, 164, 0.10);
+      border: 1px solid rgba(30, 228, 164, 0.16);
+    }
+
+    .feature-card h4,
+    .mini-card h4,
+    .stat-card h4,
+    .tool-card h4,
+    .lab-card h4,
+    .project-card h4,
+    .project-mini h4 { margin: 0 0 6px; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card,
+    .tool-card,
+    .stat-card,
+    .lab-card,
+    .project-mini {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 18px;
+      padding: 18px;
+      height: 100%;
+    }
+
+    .mini-card ul,
+    .tool-card ul,
+    .lab-card ul,
+    .report-list,
+    .project-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      color: #ffdce1;
+      background: rgba(255, 107, 122, 0.08);
+      border: 1px solid rgba(255, 107, 122, 0.18);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #d7f9ff;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .project-card {
+      padding: 28px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(11, 27, 42, 0.92), rgba(8, 18, 34, 0.96)),
+        radial-gradient(circle at top right, rgba(141,107,255,0.08), transparent 25%);
+      border: 1px solid rgba(90, 255, 214, 0.18);
+      box-shadow: 0 0 0 1px rgba(30, 228, 164, 0.06), 0 22px 55px rgba(0,0,0,0.35);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(30,228,164,0.2);
+      color: #b8ffea;
+      background: rgba(30,228,164,0.08);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .project-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .metric .value {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f3feff;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .experience-card {
+      border-radius: 24px;
+      padding: 26px;
+      background: linear-gradient(135deg, rgba(20, 70, 62, 0.85), rgba(9, 29, 48, 0.95));
+      border: 1px solid rgba(30,228,164,0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card .big {
+      font-size: 28px;
+      font-weight: 800;
+      color: #efffff;
+      margin-bottom: 4px;
+    }
+
+    .list-check {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 18px;
+      color: #d7f2ff;
+      margin-top: 12px;
+    }
+
+    .list-check div::before {
+      content: "✓";
+      color: var(--green);
+      margin-right: 10px;
+      font-weight: 900;
+    }
+
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .lab-note {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(30,228,164,0.15);
+      background: rgba(30, 228, 164, 0.06);
+      color: #d1fff2;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 18px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 16px;
+      outline: none;
+      font: inherit;
+    }
+
+    .input:focus,
+    textarea:focus {
+      border-color: rgba(30, 228, 164, 0.32);
+      box-shadow: 0 0 0 4px rgba(30, 228, 164, 0.08);
+    }
+
+    textarea { min-height: 140px; resize: vertical; }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-3,
+      .stats-grid,
+      .metrics,
+      .tool-grid,
+      .labs-grid,
+      .project-content { grid-template-columns: repeat(2, 1fr); }
+
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .section { padding: 68px 0; }
+      .grid-3,
+      .stats-grid,
+      .metrics,
+      .tool-grid,
+      .labs-grid,
+      .project-content,
+      .list-check { grid-template-columns: 1fr; }
+      .project-header,
+      .experience-header,
+      .footer-row { flex-direction: column; }
+      .hero { min-height: auto; padding-top: 44px; }
+      .card, .project-card, .experience-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="brand-badge">P</div>
+        <span>Portfolia</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Thuê tôi ngay</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-wrap">
+        <div style="width: 140px; height: 140px; margin: 0 auto 22px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, rgba(30,228,164,0.95), rgba(30,223,255,0.95), rgba(141,107,255,0.9)); box-shadow: 0 0 40px rgba(30,228,164,0.18), 0 0 60px rgba(141,107,255,0.12);">
+          <div style="width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: linear-gradient(180deg, #0f1d31, #091423); border: 3px solid rgba(8,16,30,0.95); display: flex; align-items: center; justify-content: center; color: #9feeff; font-size: 14px; text-align: center; padding: 16px;">
+            <img src="E:\cv\images\a.jpg" alt="Ảnh profile" style="width: 300%; height: 300%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; gap:6px;">
+              <div style="font-size: 36px;">👤</div>
+              <div>Ảnh profile</div>
+            </div>
+          </div>
+        </div>
+        <div class="glow"></div>
+        <div class="pill">🛡️ Cybersecurity Student & Pentester</div>
+        <h1>Xin chào, tôi là <span>Đào Minh Phương</span></h1>
+        <p class="lead">
+          Sinh viên năm cuối ngành <strong>Công nghệ thông tin</strong> .
+          Tôi đam mê khai thác lỗ hổng, kiểm thử xâm nhập, nghiên cứu bảo mật ứng dụng web
+          và xây dựng báo cáo bảo mật rõ ràng, thực tế.
+        </p>
+
+        <div class="meta-row">
+          <div class="pill">📍 TP. Hồ Chí Minh</div>
+          <!-- <div class="pill">🎓 Sinh viên năm cuối </div> -->
+          <div class="pill">🚀 Sẵn sàng thực tập / full-time</div>
+        </div>
+
+        <div class="btn-row">
+          <a href="#projects" class="btn btn-primary">Xem dự án</a>
+          <!-- <a href="#contact" class="btn btn-secondary">Liên hệ ngay</a> -->
+        </div>
+
+        <div class="social-row">
+          <a class="social-btn" href="#" aria-label="GitHub">⌘</a>
+          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+          <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-title">
+          <span class="eyebrow">GIỚI THIỆU</span>
+          <h2>Về tôi</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="about-grid" style="grid-template-columns: 1.05fr 0.95fr; gap: 34px; align-items: stretch; margin-top: 30px;">
+          <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 10px 0;">
+            <div style="font-size: 21px; line-height: 1.75; color: #a9b7c9;">
+              <p style="margin: 0 0 28px; color: #a9b7c9;">
+                Tôi là <strong style="color: #ffffff; font-weight: 600;">sinh viên ngành Công nghệ thông tin</strong> với đam
+                mê mãnh liệt về <strong style="color: var(--green); font-weight: 700;">An toàn thông tin</strong>, đặc biệt là lĩnh vực
+                <strong style="color: #dcecff; font-weight: 500;">Penetration Testing</strong> và bảo mật ứng dụng web.
+              </p>
+
+              <p style="margin: 0 0 28px; color: #a9b7c9;">
+                Thông qua hành trình học tập trên <strong style="color: var(--cyan); font-weight: 600;">TryHackMe</strong> và các dự án
+                cá nhân, tôi đã tích lũy kinh nghiệm thực hành về khai thác
+                lỗ hổng web, kiểm thử xâm nhập và phân tích hành vi tấn
+                công.
+              </p>
+
+              <p style="margin: 0; color: #a9b7c9;">
+                Hiện tại, tôi đang thực hiện <strong style="color: #bd7cff; font-weight: 600;">đồ án tốt nghiệp</strong> về hệ thống
+                phát hiện tấn công đa bước trên <strong style="color: #dcecff; font-weight: 500;">GraphQL API</strong> - một đề tài
+                kết hợp giữa bảo mật ứng dụng và phân tích hành vi.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-stack" style="gap: 20px;">
+            <div class="feature-card" style="padding: 26px 28px; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(149, 181, 214, 0.18);">
+              <div class="icon-box" style="width: 58px; height: 58px; border-radius: 14px; background: rgba(30, 228, 164, 0.12); border-color: rgba(30, 228, 164, 0.12); color: var(--green); font-size: 24px;">◎</div>
+              <div>
+                <h4 style="font-size: 22px; color: #fff; margin-bottom: 8px;">Mục tiêu nghề nghiệp</h4>
+                <p style="font-size: 16px; color: #a9b7c9; line-height: 1.7;">Trở thành Penetration Tester chuyên nghiệp chuyên sâu về bảo mật ứng dụng web và API</p>
+              </div>
+            </div>
+
+            <div class="feature-card" style="padding: 26px 28px; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(149, 181, 214, 0.18);">
+              <div class="icon-box" style="width: 58px; height: 58px; border-radius: 14px; background: rgba(0, 173, 255, 0.12); border-color: rgba(0, 173, 255, 0.12); color: var(--cyan); font-size: 24px;">⎔</div>
+              <div>
+                <h4 style="font-size: 22px; color: #fff; margin-bottom: 8px;">Phương pháp làm việc</h4>
+                <p style="font-size: 16px; color: #a9b7c9; line-height: 1.7;">Áp dụng mindset hacker - luôn tư duy về cách khai thác hệ thống để bảo vệ tốt hơn</p>
+              </div>
+            </div>
+
+            <div class="feature-card" style="padding: 26px 28px; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(149, 181, 214, 0.18);">
+              <div class="icon-box" style="width: 58px; height: 58px; border-radius: 14px; background: rgba(141, 107, 255, 0.12); border-color: rgba(141, 107, 255, 0.12); color: #b98cff; font-size: 24px;">&lt;/&gt;</div>
+              <div>
+                <h4 style="font-size: 22px; color: #fff; margin-bottom: 8px;">Nền tảng kỹ thuật</h4>
+                <p style="font-size: 16px; color: #a9b7c9; line-height: 1.7;">Có kiến thức lập trình web, ứng dụng và database giúp hiểu sâu về cách ứng dụng hoạt động</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-title">
+          <span class="eyebrow">KỸ NĂNG</span>
+          <h2>Technical Skills</h2>
+          <div class="line"></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; margin: 34px 0 18px;">
+          <div class="icon-box" style="width: 42px; height: 42px; border-radius: 10px; background: rgba(255, 82, 102, 0.08); border: 1px solid rgba(255, 82, 102, 0.25); color: #ff6678;">↗</div>
+          <div>
+            <h3 style="margin: 0; font-size: 23px;">Offensive Security Skills</h3>
+            <p style="margin: 2px 0 0; color: #8ea5bb;">Kỹ năng tấn công & khai thác lỗ hổng</p>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 18px;">
+          <div class="mini-card" style="padding: 22px 22px 18px; border-radius: 12px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.015);">
+            <h4 style="color: var(--green); font-size: 17px; margin-bottom: 12px;">Web Application Testing</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.0;">
+              <li>› SQL Injection</li>
+              <li>› XSS (Cross-Site Scripting)</li>
+              <li>› IDOR</li>
+              <li>› SSRF</li>
+              <li>› File Inclusion (LFI/RFI)</li>
+              <li>› Command Injection</li>
+              <li>› Authentication Bypass</li>
+            </ul>
+          </div>
+
+          <div class="mini-card" style="padding: 22px 22px 18px; border-radius: 12px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.015);">
+            <h4 style="color: var(--green); font-size: 17px; margin-bottom: 12px;">Network Reconnaissance</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.0;">
+              <li>› Passive & Active Recon</li>
+              <li>› Nmap Scanning</li>
+              <li>› Port Enumeration</li>
+              <li>› Service Detection</li>
+              <li>› OS Fingerprinting</li>
+            </ul>
+          </div>
+
+          <div class="mini-card" style="padding: 22px 22px 18px; border-radius: 12px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.015);">
+            <h4 style="color: var(--green); font-size: 17px; margin-bottom: 12px;">Exploitation & Post-Exploitation</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.0;">
+              <li>› Initial Access</li>
+              <li>› Privilege Escalation (Linux & Windows)</li>
+              <li>› Lateral Movement</li>
+              <li>› Persistence Techniques</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top: 24px; border-radius: 12px; background: rgba(255, 82, 102, 0.04); border: 1px solid rgba(255, 82, 102, 0.22); color: #f5dfe3;">
+          <div style="display: grid; gap: 14px; line-height: 1.8;">
+            <div>› <strong style="color: #ffffff;">Performed web application penetration testing</strong> (SQLi, XSS, IDOR, SSRF, File Inclusion) to identify and exploit vulnerabilities in simulated environments</div>
+            <div>› <strong style="color: #ffffff;">Conducted network reconnaissance</strong> using Nmap (host discovery, port scanning, service enumeration) to map target infrastructure</div>
+            <div>› <strong style="color: #ffffff;">Exploited misconfigurations and vulnerabilities</strong> to gain initial access and performed privilege escalation on both Linux & Windows systems</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; margin: 42px 0 18px;">
+          <div class="icon-box" style="width: 42px; height: 42px; border-radius: 10px; background: rgba(0, 183, 255, 0.08); border: 1px solid rgba(0, 183, 255, 0.25); color: var(--cyan);">🛠</div>
+          <div>
+            <h3 style="margin: 0; font-size: 23px;">Security Tools</h3>
+            <p style="margin: 2px 0 0; color: #8ea5bb;">Công cụ chuyên dụng trong pentest</p>
+          </div>
+        </div>
+
+        <div class="tool-grid" style="grid-template-columns: repeat(4, 1fr); gap: 14px;">
+          <div class="tool-card"><h4 style="color: var(--cyan);">Burp Suite</h4><p>HTTP traffic analysis & vulnerability discovery</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">Metasploit</h4><p>Exploitation & post-exploitation framework</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">Nmap</h4><p>Network scanning & enumeration</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">SQLmap</h4><p>Automated SQL injection detection</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">Gobuster</h4><p>Directory & file brute-forcing</p></div>
+          <div class="tool-card" style="border-color: rgba(30, 228, 164, 0.6); box-shadow: 0 0 24px rgba(30, 228, 164, 0.08);"><h4 style="color: var(--cyan);">Hydra</h4><p>Password brute-force attacks</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">Wireshark</h4><p>Network traffic analysis</p></div>
+          <div class="tool-card"><h4 style="color: var(--cyan);">John the Ripper</h4><p>Password cracking</p></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; margin: 48px 0 14px;">
+          <div class="icon-box" style="width: 42px; height: 42px; border-radius: 10px; background: rgba(141, 107, 255, 0.08); border: 1px solid rgba(141, 107, 255, 0.25); color: #b98cff;">&lt;/&gt;</div>
+          <div>
+            <h3 style="margin: 0; font-size: 23px;">Programming & Development</h3>
+            <p style="margin: 2px 0 0; color: #8ea5bb;">Ngôn ngữ lập trình & công nghệ</p>
+          </div>
+        </div>
+
+        <div class="chips" style="margin-top: 18px;">
+          <span class="chip">C/C++</span>
+          <span class="chip">Java</span>
+          <span class="chip">C#</span>
+          <span class="chip">PHP</span>
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Bash Scripting</span>
+          <span class="chip">Dark </span>
+        </div>
+
+        <p style="margin: 18px 0 0; color: #9fb2c4; font-size: 16px; line-height: 1.9;">
+          Kiến thức lập trình giúp tôi <span style="color: #c97fff;">hiểu sâu cách ứng dụng hoạt động</span>, từ đó tìm ra lỗ hổng bảo mật hiệu quả hơn. Có kinh nghiệm phát triển web, ứng dụng desktop và làm việc với database.
+        </p>
+        <p style="margin: 10px 0 0; color: #9fb2c4; font-size: 16px; line-height: 1.9;">
+          <span style="color: #8fffe0; font-weight: 600;">Technical English:</span> used in writeups and documentation analysis
+        </p>
+
+        <div style="display: flex; align-items: center; gap: 14px; margin: 48px 0 18px;">
+          <div class="icon-box" style="width: 42px; height: 42px; border-radius: 10px; background: rgba(30, 228, 164, 0.08); border: 1px solid rgba(30, 228, 164, 0.25); color: var(--green);">📄</div>
+          <div>
+            <h3 style="margin: 0; font-size: 23px;">Methodology & Reporting</h3>
+            <p style="margin: 2px 0 0; color: #8ea5bb;">Phương pháp luận & báo cáo</p>
+          </div>
+        </div>
+
+        <div class="grid-3" style="grid-template-columns: repeat(2, 1fr); gap: 20px;">
+          <div class="mini-card" style="padding: 28px 22px; border-radius: 14px; border-color: rgba(149,181,214,0.18);">
+            <h4 style="font-size: 18px; color: #fff; margin-bottom: 16px;">Pentesting Methodology</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.1;">
+              <li>› Reconnaissance → Enumeration → Exploitation → Privilege Escalation → Reporting</li>
+              <li>› OWASP Testing Guide</li>
+              <li>› PTES (Penetration Testing Execution Standard)</li>
+              <li>› MITRE ATT&CK Framework</li>
+            </ul>
+          </div>
+          <div class="mini-card" style="padding: 28px 22px; border-radius: 14px; border-color: rgba(149,181,214,0.18);">
+            <h4 style="font-size: 18px; color: #fff; margin-bottom: 16px;">Reporting Skills</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.1;">
+              <li>› Produced professional penetration testing reports with risk assessment</li>
+              <li>› Documented vulnerabilities with clear reproduction steps</li>
+              <li>› Provided actionable remediation recommendations</li>
+              <li>› CVSS scoring and risk prioritization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container" style="max-width: 1180px;">
+        <div class="section-title">
+          <span class="eyebrow">DỰ ÁN</span>
+          <h2>Đồ án tốt nghiệp</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="project-card" style="margin-top: 34px; padding: 28px; border-radius: 18px; border: 1px solid rgba(61, 255, 201, 0.22); box-shadow: 0 0 34px rgba(144, 89, 255, 0.14), 0 0 0 1px rgba(61,255,201,0.05), 0 22px 55px rgba(0,0,0,0.34); background: linear-gradient(180deg, rgba(11, 18, 33, 0.98), rgba(8, 16, 30, 0.98));">
+          <div class="project-header" style="align-items: center; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div class="icon-box" style="width: 48px; height: 48px; border-radius: 14px; background: rgba(30, 228, 164, 0.10); border: 1px solid rgba(30, 228, 164, 0.24); color: var(--green); font-size: 22px;">🛡</div>
+              <div>
+                <h3 style="margin: 0; font-size: 24px; color: #fff;">gql_shield</h3>
+                <p style="margin: 2px 0 0; color: #9cb0c3; font-size: 15px;">Behavioral Security Gateway for GraphQL</p>
+              </div>
+            </div>
+            <span class="project-tag" style="background: rgba(30, 228, 164, 0.08); color: #7effd6; border-color: rgba(30, 228, 164, 0.28);">Đang phát triển</span>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 12px; font-size: 20px; line-height: 1.5; color: #21d4ff; font-weight: 800;">
+              Hệ thống phân tích hành vi phát hiện tấn công đa bước trên GraphQL API
+            </h4>
+            <p style="margin: 0; color: #a7b7c8; font-size: 15px; line-height: 2;">
+              Đồ án tốt nghiệp tập trung vào việc thiết kế một hệ thống bảo mật GraphQL dựa trên
+              <strong style="color: #20ffd6; font-weight: 700;">phân tích hành vi theo thời gian</strong>, nhằm phát hiện
+              các chiến dịch tấn công đa bước mà các phương pháp truyền thống không nhận diện được.
+            </p>
+          </div>
+
+          <div class="project-content" style="grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 26px;">
+            <div class="project-mini" style="padding: 22px 22px 18px; border-radius: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(149,181,214,0.16);">
+              <h4 style="display: flex; align-items: center; gap: 10px; font-size: 16px; color: #fff; margin-bottom: 12px;">▣ Kiến trúc phân tầng</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; color: #9fb2c4; line-height: 2.0;">
+                <li>› A3: Per-request Perception Layer</li>
+                <li>› A4: Stateful Behavior Reasoning Engine</li>
+                <li>› Policy Engine for decision making</li>
+              </ul>
+            </div>
+
+            <div class="project-mini" style="padding: 22px 22px 18px; border-radius: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(149,181,214,0.16);">
+              <h4 style="display: flex; align-items: center; gap: 10px; font-size: 16px; color: #fff; margin-bottom: 12px;">✣ Behavioral Analysis</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; color: #b38cff; line-height: 2.0;">
+                <li>› Multi-horizon window reasoning</li>
+                <li>› Intent hypothesis engine</li>
+                <li>› Sequence scoring & transition model</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="notice" style="margin-top: 26px; padding: 18px 22px; border-radius: 14px; background: rgba(255, 82, 102, 0.04); border: 1px solid rgba(255, 82, 102, 0.22); color: #ffdce3;">
+            <h4 style="margin: 0 0 18px; display: flex; align-items: center; gap: 10px; font-size: 16px; color: #fff;">⤴ Phát hiện các loại tấn công (MITRE ATT&CK)</h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 34px;">
+              <div>
+                <div style="color: #ff8f47; font-weight: 700; margin-bottom: 6px;">Discovery</div>
+                <div style="color: #9fb2c4; font-size: 14px;">Schema recon, field probing, capability mapping</div>
+              </div>
+              <div>
+                <div style="color: #ffb347; font-weight: 700; margin-bottom: 6px;">Collection</div>
+                <div style="color: #9fb2c4; font-size: 14px;">Data surface expansion, sensitive data access</div>
+              </div>
+              <div>
+                <div style="color: #ffd24d; font-weight: 700; margin-bottom: 6px;">Impact</div>
+                <div style="color: #9fb2c4; font-size: 14px;">Resource exhaustion, availability abuse</div>
+              </div>
+              <div>
+                <div style="color: #21d4ff; font-weight: 700; margin-bottom: 6px;">Defense Evasion</div>
+                <div style="color: #9fb2c4; font-size: 14px;">Alias randomization, actor spray, transport shifts</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; color: #9cb0c3; font-size: 15px;">Công nghệ sử dụng</div>
+          <div class="chips" style="margin-top: 12px;">
+            <span class="chip">Python</span>
+            <span class="chip">GraphQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Docker</span>
+            <span class="chip">FastAPI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Kinh nghiệm thực hành</span>
+          <h2>Hands-on Experience</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-header">
+            <div>
+              <div class="pill">🏆 TryHackMe Profile</div>
+              <h3 style="margin: 14px 0 8px; font-size: 28px;">Kết quả học tập & luyện tập</h3>
+              <p>GPA: 3.22/4.0
+              </p>
+            </div>
+            <span class="project-tag">Level 5</span>
+          </div>
+
+          <!-- <div class="stats-grid">
+            <div class="stat-card"><div class="big">30+</div><h4>Lab Completed</h4><p>Machine và module thực hành.</p></div>
+            <div class="stat-card"><div class="big">15+</div><h4>Writeups</h4><p>Ghi chú & báo cáo kỹ thuật.</p></div>
+            <div class="stat-card"><div class="big">100+</div><h4>Days Streak</h4><p>Duy trì học tập liên tục.</p></div>
+            <div class="stat-card"><div class="big">5+</div><h4>Domains</h4><p>Web, Network, Linux, AD, PrivEsc.</p></div>
+          </div> -->
+
+          <div class="list-check">
+            <div>Linux enumeration và privilege escalation</div>
+            <div>Kỹ năng xác định bề mặt tấn công</div>
+            <div>Web exploitation từ cơ bản đến nâng cao</div>
+            <div>Custom wordlists và automation script</div>
+          </div>
+        </div>
+
+        <div class="labs-grid">
+          <div class="lab-card">
+            <h4>Web Exploitation</h4>
+            <ul>
+              <li>Authentication flaws</li>
+              <li>IDOR & access control bypass</li>
+              <li>File upload / LFI / RCE basics</li>
+              <li>Burp Suite workflow</li>
+            </ul>
+          </div>
+          <div class="lab-card">
+            <h4>Network Pentesting</h4>
+            <ul>
+              <li>Port/service discovery</li>
+              <li>SMB / FTP enumeration</li>
+              <li>Credential attacks in lab</li>
+              <li>Manual validation</li>
+            </ul>
+          </div>
+          <div class="lab-card">
+            <h4>Privilege Escalation</h4>
+            <ul>
+              <li>Sudo abuse</li>
+              <li>Kernel exploit awareness</li>
+              <li>Misconfigured services</li>
+              <li>Writable files & cron jobs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lab-note">
+          <strong>Mục tiêu hiện tại:</strong> tiếp tục mở rộng portfolio bằng các writeup chất lượng hơn,
+          dự án lab thực tế hơn và tham gia môi trường internship để rèn kỹ năng teamwork, reporting và delivery.
+        </div>
+      </div>
+    </section>
+<!-- 
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Liên hệ</span>
+          <h2>Kết nối với tôi</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="feature-stack">
+            <div class="contact-item">
+              <div class="icon-box">✉️</div>
+              <div>
+                <h4>Email</h4>
+                <p>yourname@example.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon-box">📞</div>
+              <div>
+                <h4>Điện thoại</h4>
+                <p>+84 123 456 789</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon-box">📍</div>
+              <div>
+                <h4>Địa chỉ</h4>
+                <p>TP. Hồ Chí Minh, Việt Nam</p>
+              </div>
+            </div>
+            <div class="btn-row" style="justify-content: flex-start; margin-top: 4px;">
+              <a class="social-btn" href="#">⌘</a>
+              <a class="social-btn" href="#">in</a>
+              <a class="social-btn" href="#">f</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Gửi tin nhắn</h3>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+              <input class="input" type="text" placeholder="Họ và tên" required />
+              <input class="input" type="email" placeholder="Email của bạn" required />
+              <input class="input" type="text" placeholder="Tiêu đề" />
+              <textarea placeholder="Tin nhắn của bạn..."></textarea>
+              <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> -->
+      <section class="section" id="certifications">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-title">
+          <span class="eyebrow">CHỨNG CHỈ</span>
+          <h2>Certifications</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 30px;">
+          <div class="mini-card" style="padding: 24px; border-radius: 16px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.02);">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom: 12px;">
+              <div class="icon-box" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(30, 228, 164, 0.10); color: var(--green);">🏅</div>
+              <div>
+                <h4 style="margin:0; font-size: 20px; color:#fff;">Cloud Security Foundations</h4>
+                <p style="margin:2px 0 0; color:#8ea5bb;">Training Badge</p>
+              </div>
+            </div>
+            <p style="color:#9fb2c4; margin:0 0 14px;">Khóa học đào tạo về các nguyên tắc bảo mật cốt lõi, cơ chế kiểm soát truy cập và các phương pháp bảo vệ dữ liệu trên nền tảng điện toán đám mây AWS.</p>
+            <div class="chips">
+              <span class="chip">AWS</span>
+              <span class="chip">AWS Cloud</span>
+              <span class="chip">AWS Cloud Security</span>
+              <span class="chip">Cloud Security</span>
+            </div>
+          </div>
+
+          <!-- <div class="mini-card" style="padding: 24px; border-radius: 16px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.02);">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom: 12px;">
+              <div class="icon-box" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(0, 183, 255, 0.10); color: var(--cyan);">📜</div>
+              <div>
+                <h4 style="margin:0; font-size: 20px; color:#fff;">Google Cybersecurity</h4>
+                <p style="margin:2px 0 0; color:#8ea5bb;">Professional Certificate</p>
+              </div>
+            </div>
+            <p style="color:#9fb2c4; margin:0 0 14px;">Nền tảng về security operations, incident response, Linux, SQL và network security.</p>
+            <div class="chips">
+              <span class="chip">Security Ops</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div> -->
+
+          <!-- <div class="mini-card" style="padding: 24px; border-radius: 16px; border-color: rgba(149,181,214,0.18); background: rgba(255,255,255,0.02);">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom: 12px;">
+              <div class="icon-box" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(141, 107, 255, 0.10); color: #c195ff;">🎓</div>
+              <div>
+                <h4 style="margin:0; font-size: 20px; color:#fff;">Khác</h4>
+                <p style="margin:2px 0 0; color:#8ea5bb;">Workshop / Course / Internal Training</p>
+              </div>
+            </div>
+            <p style="color:#9fb2c4; margin:0 0 14px;">Bạn có thể thay bằng các chứng chỉ thật như CEH, eJPT, Security+, hoặc chứng nhận học thuật hiện có.</p>
+            <div class="chips">
+              <span class="chip">eJPT</span>
+              <span class="chip">Security+</span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Portfolia. All rights reserved.</div>
+      <div>Made with ❤ by Dao Minh Phuong</div>
+      <div>VN • EN</div>
+    </div>
+  </footer>
+
+  <!-- <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert('Biểu mẫu demo đã được gửi. Hãy kết nối với backend hoặc Formspree để nhận email thật.');
+    }
+  </script> -->
+</body>
+</html>
